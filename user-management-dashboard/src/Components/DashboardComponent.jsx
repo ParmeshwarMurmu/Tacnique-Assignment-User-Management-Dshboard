@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllUserDetails } from '../Redux/AllUserReducer/action'
 import style from '../CSS/DashboardComponent.module.css'
 import { Avatar, Button } from '@chakra-ui/react'
+import { EditModal } from './EditModal'
 
 
 export const DashboardComponent = () => {
@@ -41,12 +42,16 @@ export const DashboardComponent = () => {
 
             <div className={style.ButtonEditorContainer}>
 
-              <Button
+              {/* <Button
               className={style.editButton}
               variant={'none'}
               >
                 Edit
-              </Button>
+              </Button> */}
+              
+              <div className={style.editModalContainer} >
+              <EditModal {...data} />
+              </div>
 
               <Button
               className={style.deleteButton}

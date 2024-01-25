@@ -26,10 +26,16 @@ span{
     margin-top: 10px;
 }
 
+.editModalContainer{
+    width: 40%;
+
+}
+
 .editButton{
     background-color: rgb(42, 121, 54);
     color: white;
-    width: 40%;
+    width: 100%;
+    
 }
 
 .editButton:hover{

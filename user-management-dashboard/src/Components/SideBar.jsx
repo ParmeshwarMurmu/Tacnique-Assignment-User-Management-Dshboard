@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, Input } from '@chakra-ui/react'
+import { Heading, Input, Button } from '@chakra-ui/react'
 import {
   FormControl,
   FormLabel,
@@ -8,6 +8,7 @@ import {
   Select
 } from '@chakra-ui/react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
+import style from '../CSS/SideBar.module.css'
 
 
 
@@ -23,19 +24,25 @@ export const SideBar = () => {
       department: store.AddUserReducer.department,
     }
   }, shallowEqual)
+
+  const submitFormHandler = ()=>{
+
+  }
   
 
   return (
-    <div>
+    <div className={style.sideBarComponentContainer}>
+
+      <div>
       <h1>Add User</h1>
 
       <div>
-        <form>
+        <form onSubmit={submitFormHandler}>
 
 
           <FormControl mt={1}>
             <FormLabel>First Name</FormLabel>
-            <Input type='number' placeholder='Price' value={firstName}
+            <Input type='text' placeholder='First Name' value={firstName}
               onChange={(e) => {
                 
               }} />
@@ -43,23 +50,23 @@ export const SideBar = () => {
 
 
 
-          <FormControl mt={2}>
+          <FormControl mt={1}>
             <FormLabel>Last Name</FormLabel>
-            <Input type='number' placeholder='Last Name' value={lastName}
+            <Input type='text' placeholder='Last Name' value={lastName}
               onChange={(e) => {
 
               }} />
           </FormControl>
 
-          <FormControl mt={2}>
+          <FormControl mt={1}>
             <FormLabel>Email</FormLabel>
-            <Input type='number' placeholder='Email' value={email}
+            <Input type='text' placeholder='Email' value={email}
               onChange={(e) => {
 
               }} />
           </FormControl>
 
-          <FormControl mt={2}>
+          <FormControl mt={1}>
             <FormLabel>Category</FormLabel>
             <Select placeholder='Select Department' value={department}
               onChange={(e) => {
@@ -76,7 +83,17 @@ export const SideBar = () => {
             </Select>
 
           </FormControl>
+
+          <Input className={style.submitBtn}
+          variant={'none'}
+          type='submit'
+          value={'submit'}
+           />
+
+       
         </form>
+      </div>
+
       </div>
     </div>
   )

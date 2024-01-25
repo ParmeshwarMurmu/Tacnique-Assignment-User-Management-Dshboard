@@ -1,0 +1,19 @@
+
+.sideBarComponentContainer{
+    border: 2px solid green;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+h1{
+    text-align: center;
+}
+
+.submitBtn{
+    background-color: blue;
+    margin-top: 10px;
+}

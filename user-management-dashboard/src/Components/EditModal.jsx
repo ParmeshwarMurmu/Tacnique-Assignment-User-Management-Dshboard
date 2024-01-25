@@ -7,6 +7,7 @@ import { EditIcon } from '@chakra-ui/icons'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
 import style from '../CSS/DashboardComponent.module.css'
+import { editUserEmailAddressAction, editUserFirstNameAction, editUserLastNameAction } from '../Redux/EditUserReducer/action'
 
 export const EditModal = ({ id, firstName, lastName, email, department }) => {
 
@@ -62,13 +63,16 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                 <InputGroup>
                                     <FormControl mt={1}>
                                         <FormLabel>First Name</FormLabel>
-                                        <Input type='text' placeholder='First Name' value={!editFirstName ? firstName : ''}
-                                            // disabled = {editFirstName}
-                                            // onFocus={() => !editFirstName && firstNameRef.current.focus()}
-                                            isDisabled={!editFirstName}
-                                            onChange={(e) => {
-                                             
-                                            }} />
+                                        {editUserFirstName ? (
+                                        <Input
+                                            type="text"
+                                            placeholder="First Name"
+                                            value={editFirstName}
+                                            onChange={(e)=>{dispatch(editUserFirstNameAction(e.target.value))}}
+                                        />
+                                    ) : (
+                                        <Input type="text" placeholder="First Name" value={firstName} isDisabled />
+                                    )}
                                     </FormControl>
 
                                     <InputRightElement width="4.5rem">
@@ -77,7 +81,7 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                             h="1.75rem"
                                             size="sm"
                                             icon={<EditIcon />}
-                                            onClick={() => { setEditFirstName(true) }}
+                                            onClick={() => { setEditUserFirstName(true) }}
                                         />
                                     </InputRightElement>
                                 </InputGroup>
@@ -86,11 +90,16 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                 <InputGroup>
                                     <FormControl mt={1}>
                                         <FormLabel>Last Name</FormLabel>
-                                        <Input type='text' placeholder='Last Name' value={lastName}
-                                            disabled
-                                            onChange={(e) => {
-
-                                            }} />
+                                        {editUserLastName ? (
+                                        <Input
+                                            type="text"
+                                            placeholder="First Name"
+                                            value={editLastName}
+                                            onChange={(e)=>{dispatch(editUserLastNameAction(e.target.value))}}
+                                        />
+                                    ) : (
+                                        <Input type="text" placeholder="Last Name" value={lastName} isDisabled />
+                                    )}
                                     </FormControl>
 
                                     <InputRightElement width="4.5rem">
@@ -107,11 +116,16 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                 <InputGroup>
                                     <FormControl mt={1}>
                                         <FormLabel>Email</FormLabel>
-                                        <Input type='text' placeholder='Email' value={email}
-                                            disabled
-                                            onChange={(e) => {
-
-                                            }} />
+                                        {editUserEmail? (
+                                        <Input
+                                            type="text"
+                                            placeholder="Email"
+                                            value={editEmail}
+                                            onChange={(e)=>{dispatch(editUserEmailAddressAction(e.target.value))}}
+                                        />
+                                    ) : (
+                                        <Input type="text" placeholder="Email" value={email} isDisabled />
+                                    )}
                                     </FormControl>
 
                                     <InputRightElement width="4.5rem">
@@ -129,8 +143,20 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                 <InputGroup>
                                     <FormControl mt={1}>
                                         <FormLabel>Category</FormLabel>
-                                        <Select placeholder='Select Department' value={department}
-                                            disabled
+
+                                        {editUserFirstName ? (
+                                        <Input
+                                            type="text"
+                                            placeholder="First Name"
+                                            value={editFirstName}
+                                            onChange={(e)=>{dispatch(editUserFirstNameAction(e.target.value))}}
+                                        />
+                                    ) : (
+                                        <Input type="text" placeholder="First Name" value={firstName} isDisabled />
+                                    )}{
+                                        editUserDepartment ? (
+                                            <Select placeholder='Select Department' value={editDepartment}
+                                            
                                             onChange={(e) => {
                                                 // dispatch(userDepartmentAction(e.target.value))
                                             }}>
@@ -143,6 +169,24 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                             <option value="Health and Safety Department">Health and Safety Department</option>
 
                                         </Select>
+                                        )
+
+                                        : (
+                                            <Select placeholder='Select Department' value={department}
+                                            disabled
+                                            >
+                                            <option value="HR Department">HR Department</option>
+                                            <option value="Finance Department">Finance Department</option>
+                                            <option value="Marketing Department">Marketing Department</option>
+                                            <option value="Sales Department">Sales Department</option>
+                                            <option value="IT Department">IT Department</option>
+                                            <option value="Production Department">Production Department</option>
+                                            <option value="Health and Safety Department">Health and Safety Department</option>
+
+                                        </Select>
+                                        )
+                                    }
+                                        
 
                                     </FormControl>
 

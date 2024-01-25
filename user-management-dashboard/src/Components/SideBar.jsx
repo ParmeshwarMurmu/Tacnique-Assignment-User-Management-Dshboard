@@ -5,16 +5,21 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
-  Select
+  Select,
+  useToast
 } from '@chakra-ui/react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import style from '../CSS/SideBar.module.css'
-
+import { userDepartmentAction, userEmailAddressAction, userFirstNameAction, userLastNameAction } from '../Redux/AddUserReducer/action'
+import axios from 'axios'
+import { APP_URL } from '../Constants/Constants'
+import { addUser } from '../Redux/AddUserReducer/action'
 
 
 export const SideBar = () => {
  
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const toast = useToast()
 
   const { firstName, lastName, email, department } = useSelector((store) => {
     return {
@@ -25,7 +30,27 @@ export const SideBar = () => {
     }
   }, shallowEqual)
 
-  const submitFormHandler = ()=>{
+  const submitFormHandler = (e)=>{
+    e.preventDefault();
+    let userData = {
+      firstName,
+      lastName,
+      email,
+      department
+    }
+
+    console.log("UserData", userData)
+
+    dispatch(addUser(userData))
+    .then((res)=>{
+      toast({
+        description: "User Added Successfull.",
+        status: 'success',
+        duration: 4000,
+        isClosable: true,
+      })
+    })
+
 
   }
   
@@ -44,7 +69,7 @@ export const SideBar = () => {
             <FormLabel>First Name</FormLabel>
             <Input type='text' placeholder='First Name' value={firstName}
               onChange={(e) => {
-                
+                dispatch(userFirstNameAction(e.target.value))
               }} />
           </FormControl>
 
@@ -54,7 +79,7 @@ export const SideBar = () => {
             <FormLabel>Last Name</FormLabel>
             <Input type='text' placeholder='Last Name' value={lastName}
               onChange={(e) => {
-
+                dispatch(userLastNameAction(e.target.value))
               }} />
           </FormControl>
 
@@ -62,7 +87,7 @@ export const SideBar = () => {
             <FormLabel>Email</FormLabel>
             <Input type='text' placeholder='Email' value={email}
               onChange={(e) => {
-
+                 dispatch(userEmailAddressAction(e.target.value))
               }} />
           </FormControl>
 
@@ -70,7 +95,7 @@ export const SideBar = () => {
             <FormLabel>Category</FormLabel>
             <Select placeholder='Select Department' value={department}
               onChange={(e) => {
-                // dispatch(womencategorySuccess(e.target.value))
+                dispatch(userDepartmentAction(e.target.value))
               }}>
               <option value="HR Department">HR Department</option>
               <option value="Finance Department">Finance Department</option>

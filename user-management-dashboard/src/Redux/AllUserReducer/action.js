@@ -21,8 +21,9 @@ export const getAllUserDetails = ()=>(dispatch)=>{
     dispatch(allUserLoadingAction())
     axios.get(`${APP_URL}/users`)
     .then((res)=>{
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
+        dispatch(allUserSuccessAction(res.data))
 
     })
     .catch((err)=>{

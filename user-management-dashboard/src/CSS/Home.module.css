@@ -1,0 +1,16 @@
+.bodyContainer{
+    display: flex;
+    padding: 10px;
+}
+
+.sideBarContainer{
+    border: 2px solid red;
+    width: 20%;
+}
+
+
+
+.dashboardContainer{
+    border: 2px solid black;
+    width: 80%;
+}

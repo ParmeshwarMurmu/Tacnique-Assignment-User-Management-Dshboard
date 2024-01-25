@@ -1,0 +1,48 @@
+
+.dashboardComponentContainer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.userCard{
+    border: 2px solid red;
+    padding: 10px;
+}
+
+.userCardAvatar{
+    text-align: center;
+}
+
+span{
+    font-weight: bold;
+    font-size: medium;
+}
+
+.ButtonEditorContainer{
+    /* border: 2px solid rgb(26, 255, 18); */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.editButton{
+    background-color: rgb(42, 121, 54);
+    color: white;
+    width: 40%;
+}
+
+.editButton:hover{
+    background-color: rgb(62, 165, 54);
+}
+
+
+.deleteButton{
+    background-color: rgb(225, 63, 63);
+    color: white;
+    width: 40%;
+}
+
+.deleteButton:hover{
+    background-color: rgb(237, 92, 92);
+}

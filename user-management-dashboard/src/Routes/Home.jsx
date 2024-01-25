@@ -5,6 +5,7 @@ import { getAllUserDetails } from '../Redux/AllUserReducer/action'
 import { SideBar } from '../Components/SideBar'
 import style from '../CSS/Home.module.css'
 import { Heading } from '@chakra-ui/react'
+import { DashboardComponent } from '../Components/DashboardComponent'
 
 export const Home = () => {
 
@@ -37,6 +38,10 @@ export const Home = () => {
         <Heading as='h2' size='xl'>
           Dashboard
         </Heading>
+
+        <div>
+          <DashboardComponent />
+        </div>
       </div>
     </div>
   )

@@ -9,13 +9,24 @@ export const allUserLoadingAction = ()=>{
     return {type: ALL_USER_LOADING }
 }
 
-export const getAllUserDetails = ()=>{
+export const allUserSuccessAction = (payload)=>{
+    return {type: ALL_USER_SUCCESS, payload }
+}
 
-    axios.get(`${APP_URL}`)
+export const allUserErrorAction = ()=>{
+    return {type: ALL_USER_ERROR }
+}
+
+export const getAllUserDetails = ()=>(dispatch)=>{
+    dispatch(allUserLoadingAction())
+    axios.get(`${APP_URL}/users`)
     .then((res)=>{
+        console.log(res);
         console.log(res.data);
+
     })
     .catch((err)=>{
         console.log(err);
+        dispatch(allUserErrorAction())
     })
 }

@@ -136,11 +136,12 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                 <InputGroup>
                                     <FormControl mt={1}>
                                         <FormLabel>Last Name</FormLabel>
-                                        {editUserLastName ? (
+                                        {editUserLastName || saveLastName ? (
                                             <Input
                                                 type="text"
-                                                placeholder="First Name"
+                                                placeholder="Last Name"
                                                 value={editLastName}
+                                                disabled={saveLastName}
                                                 onChange={(e) => { dispatch(editUserLastNameAction(e.target.value)) }}
                                             />
                                         ) : (
@@ -149,13 +150,49 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                     </FormControl>
 
                                     <InputRightElement width="4.5rem">
-                                        <IconButton
-                                            variant={'none'}
-                                            h="1.75rem"
-                                            size="sm"
-                                            icon={<EditIcon />}
-                                            onClick={() => { setEditUserLastName(true) }}
-                                        />
+                                    {!editUserLastName && <Tooltip hasArrow label='Edit' bg='gray.300' color='black'>
+                                            <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<EditIcon />}
+                                                onClick={() => { 
+                                                    setEditUserLastName(true)
+                                                    setSaveLastName(false)
+
+                                                 }}
+                                            />
+
+                                        </Tooltip>
+                                        }
+
+                                        {editUserLastName && <Tooltip hasArrow label='save' bg='gray.300' color='black'>
+                                            <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<CheckIcon />}
+                                                onClick={()=>{
+                                                    setSaveLastName(true)
+                                                    setEditUserLastName(false)
+                                                }}
+                                            />
+                                        </Tooltip>
+                                        }
+
+                                        {
+                                            editUserLastName && <Tooltip hasArrow label='discard' bg='gray.300' color='black'>
+                                                <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<SmallCloseIcon />}
+                                                onClick={()=>{
+                                                    setEditUserLastName(false)
+                                                }}
+                                                 />
+                                            </Tooltip>
+                                        }
                                     </InputRightElement>
                                 </InputGroup>
 
@@ -163,11 +200,12 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                 <InputGroup>
                                     <FormControl mt={1}>
                                         <FormLabel>Email</FormLabel>
-                                        {editUserEmail ? (
+                                        {editUserEmail || saveEmail ? (
                                             <Input
                                                 type="text"
                                                 placeholder="Email"
                                                 value={editEmail}
+                                                disabled={saveEmail}
                                                 onChange={(e) => { dispatch(editUserEmailAddressAction(e.target.value)) }}
                                             />
                                         ) : (
@@ -176,13 +214,49 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                     </FormControl>
 
                                     <InputRightElement width="4.5rem">
-                                        <IconButton
-                                            variant={'none'}
-                                            h="1.75rem"
-                                            size="sm"
-                                            icon={<EditIcon />}
-                                            onClick={() => { setEditUserEmail(true) }}
-                                        />
+                                    {!editUserEmail && <Tooltip hasArrow label='Edit' bg='gray.300' color='black'>
+                                            <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<EditIcon />}
+                                                onClick={() => { 
+                                                    setEditUserEmail(true)
+                                                    setSaveEmail(false)
+
+                                                 }}
+                                            />
+
+                                        </Tooltip>
+                                        }
+
+                                        {editUserEmail && <Tooltip hasArrow label='save' bg='gray.300' color='black'>
+                                            <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<CheckIcon />}
+                                                onClick={()=>{
+                                                    setSaveEmail(true)
+                                                    setEditUserEmail(false)
+                                                }}
+                                            />
+                                        </Tooltip>
+                                        }
+
+                                        {
+                                            editUserEmail && <Tooltip hasArrow label='discard' bg='gray.300' color='black'>
+                                                <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<SmallCloseIcon />}
+                                                onClick={()=>{
+                                                    setEditUserEmail(false)
+                                                }}
+                                                 />
+                                            </Tooltip>
+                                        }
                                     </InputRightElement>
 
                                 </InputGroup>
@@ -232,13 +306,49 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
 
 
                                     <InputRightElement width="4.5rem">
-                                        <IconButton
-                                            variant={'none'}
-                                            h="1.75rem"
-                                            size="sm"
-                                            icon={<EditIcon />}
-                                            onClick={() => { setEditUserDepartment(true) }}
-                                        />
+                                    {!editUserFirstName && <Tooltip hasArrow label='Edit' bg='gray.300' color='black'>
+                                            <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<EditIcon />}
+                                                onClick={() => { 
+                                                    setEditUserFirstName(true)
+                                                    setSaveFirstName(false)
+
+                                                 }}
+                                            />
+
+                                        </Tooltip>
+                                        }
+
+                                        {editUserFirstName && <Tooltip hasArrow label='save' bg='gray.300' color='black'>
+                                            <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<CheckIcon />}
+                                                onClick={()=>{
+                                                    setSaveFirstName(true)
+                                                    setEditUserFirstName(false)
+                                                }}
+                                            />
+                                        </Tooltip>
+                                        }
+
+                                        {
+                                            editUserFirstName && <Tooltip hasArrow label='discard' bg='gray.300' color='black'>
+                                                <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<SmallCloseIcon />}
+                                                onClick={()=>{
+                                                    setEditUserFirstName(false)
+                                                }}
+                                                 />
+                                            </Tooltip>
+                                        }
                                     </InputRightElement>
 
                                 </InputGroup>

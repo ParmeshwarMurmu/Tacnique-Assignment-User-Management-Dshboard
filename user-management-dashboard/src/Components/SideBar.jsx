@@ -21,16 +21,24 @@ export const SideBar = () => {
 
   const dispatch = useDispatch();
   const toast = useToast()
+  
 
-  const { firstName, lastName, email, department, isLoading } = useSelector((store) => {
+  // USESELECTOR TO DESTRUCTURE PROPERTIES FROM REDUX STORE FROM AddUserReducer
+
+  const { firstName, lastName, email, department, isLoading, errMsg} = useSelector((store) => {
     return {
       firstName: store.AddUserReducer.firstName,
       lastName: store.AddUserReducer.lastName,
       email: store.AddUserReducer.email,
       department: store.AddUserReducer.department,
       isLoading: store.AddUserReducer.isLoading,
+      errMsg: store.AddUserReducer.errMsg,
     }
   }, shallowEqual)
+   
+
+
+  // FUNCTION SUBMIT FORM HANDLER TO ADD USER WITH THEIR CREDENTIALS
 
   const submitFormHandler = () => {
 
@@ -41,7 +49,8 @@ export const SideBar = () => {
       department
     }
 
-    console.log("UserData", userData)
+   
+    // DISPATCHING ADDUSER FUNCTION WITH ARGUMENT USERDATA
 
     dispatch(addUser(userData))
       .then((res) => {
@@ -54,6 +63,14 @@ export const SideBar = () => {
 
         dispatch(addUserResetAction())
         dispatch(getAllUserDetails())
+      })
+      .catch((err)=>{
+        toast({
+          description:`${errMsg}`,
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
+        })
       })
 
 

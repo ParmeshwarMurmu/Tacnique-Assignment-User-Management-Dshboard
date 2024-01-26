@@ -7,7 +7,7 @@ import { EditIcon, CheckIcon, SmallCloseIcon } from '@chakra-ui/icons'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
 import style from '../CSS/DashboardComponent.module.css'
-import { editUserDepartmentAction, editUserEmailAddressAction, editUserFirstNameAction, editUserLastNameAction, saveUserEditedDetails } from '../Redux/EditUserReducer/action'
+import { editUserDepartmentAction, editUserEmailAddressAction, editUserFirstNameAction, editUserLastNameAction, editUserResetAction, saveUserEditedDetails } from '../Redux/EditUserReducer/action'
 import { Tooltip, } from '@chakra-ui/react'
 import { getAllUserDetails } from '../Redux/AllUserReducer/action'
 
@@ -16,22 +16,29 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
+    
+    // STATES TO TOGGLE BETWEEN ICONS WHEN USER CLICKS ON EDIT ICON 
+
     const [editUserFirstName, setEditUserFirstName] = useState(false);
     const [editUserLastName, setEditUserLastName] = useState(false)
     const [editUserEmail, setEditUserEmail] = useState(false)
     const [editUserDepartment, setEditUserDepartment] = useState(false)
 
-    // Saves edit
+
+    // STATES TO SAVE DATA WHEN USER EDITS EXISTING DATA
+
     const [saveFirstname, setSaveFirstName] = useState(false);
     const [saveLastName, setSaveLastName] = useState(false);
     const [saveEmail, setSaveEmail] = useState(false)
     const [saveDepartment, setSaveDepartment] = useState(false)
 
-    const firstNameRef = useRef(null);
+    
     const toast = useToast()
 
 
     const dispatch = useDispatch();
+    
+     // USESELECTOR TO DESTRUCTURE PROPERTIES FROM REDUX STORE FROM EditUserReducer
 
     const { editFirstName, editLastName, editEmail, editDepartment, editIsLoading, editIsError, editErrMsg } = useSelector((store) => {
         return {
@@ -45,6 +52,8 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
         }
     }, shallowEqual)
 
+    
+    //FUNCTION TO HANDLE WHEN USER IS DONE WITH EDITING AND SUBMIT THE FORM 
 
     const editHandler = () => {
         let updateInfo = {
@@ -54,7 +63,7 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
             department: saveDepartment ? editDepartment : department
         }
 
-        console.log("updateInfo", updateInfo)
+        // console.log("updateInfo", updateInfo)
         dispatch(saveUserEditedDetails(updateInfo, id))
             .then((res) => {
                 toast({
@@ -63,6 +72,7 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                     duration: 4000,
                     isClosable: true,
                 })
+                dispatch(editUserResetAction())
                 dispatch(getAllUserDetails())
             })
             .catch((err) => {
@@ -76,7 +86,22 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
 
     }
 
-    console.log("isED", editIsLoading);
+    // console.log("isED", editIsLoading);
+    
+    // FUNCTION TO HANDLE WHEN USER CLCKS ON EDIT MODAL CLOSE ICON TO RESET THE STATES
+
+    const closeEditModal = ()=>{
+        setEditUserFirstName(false)
+        setEditUserLastName(false)
+        setEditUserEmail(false)
+        setEditUserDepartment(false)
+
+        setSaveFirstName(false)
+        setSaveLastName(false)
+        setSaveEmail(false)
+        setSaveDepartment(false)
+
+    }
 
 
     return (
@@ -88,10 +113,10 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
             >Edit</Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
+                <ModalOverlay onClick={closeEditModal}/>
                 <ModalContent>
                     <ModalHeader>Modal Title</ModalHeader>
-                    <ModalCloseButton />
+                    <ModalCloseButton  />
                     <ModalBody>
 
 

@@ -1,6 +1,8 @@
 import { ADD_USER_ERROR, ADD_USER_LOADING, ADD_USER_RESET, ADD_USER_SUCCESS, USER_DEPARTMENT, USER_EMAIL_ADDRESS, USER_FIRST_NAME, USER_LAST_NAME } from "./action"
 
 
+// INITIAL STATE FOR ADD USER FORM
+
 const initialState = {
     firstName: '',
     lastName: '',
@@ -10,6 +12,8 @@ const initialState = {
     isError: false,
     errMsg: '',
 }
+
+// REDUCER FUNCTION FOR ADDING USERS 
 
 export const reducer = (state = initialState, { type, payload }) => {
 

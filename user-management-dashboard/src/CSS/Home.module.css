@@ -49,3 +49,39 @@
     justify-content: center;
     align-items: center;
 }
+
+.hamBurgerContainer{
+    display: none;
+}
+
+
+@media all and (max-width: 768px) {
+    .hamBurgerSideBarContainer{
+        width: 100%;
+        /* padding: 5px; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        height: 670px;
+    }
+
+    .hamBurgerContainer{
+        display: block;
+    }
+
+    .sideBarContainer{
+        display: none;
+    }
+
+    .bodyContainer{
+        display: block;
+    }
+
+    .dashboardContainer{
+        width: 100%;
+    }
+
+    
+}
+

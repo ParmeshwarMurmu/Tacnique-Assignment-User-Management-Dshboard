@@ -4,6 +4,7 @@ const initialState = {
     userData: [],
     isLoading: false,
     isError: false,
+    errMsg: '',
     x_total_count: 0
 }
 
@@ -17,7 +18,7 @@ export const reducer = (state = initialState, { type, payload }) => {
             return { ...state, isLoading: false, userData: payload }
 
         case ALL_USER_ERROR:
-            return { ...state, isLoading: false, isError: true }
+            return { ...state, isLoading: false, isError: true, errMsg: payload }
 
             case X_TOTAL_COUNT:
                 return {...state, x_total_count: payload}

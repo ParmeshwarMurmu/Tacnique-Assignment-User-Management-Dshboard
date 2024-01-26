@@ -7,6 +7,8 @@ import style from '../CSS/Home.module.css'
 import { Heading, Button } from '@chakra-ui/react'
 import { DashboardComponent } from '../Components/DashboardComponent'
 import { Spinner } from '@chakra-ui/react'
+import { HamBurgerModal } from '../Components/HamBurgerModal'
+
 
 
 export const Home = () => {
@@ -40,20 +42,15 @@ export const Home = () => {
   }, [pageNumber, x_total_count])
 
 
-  // const paginationHandler = (pageNo) => {
-  //   dispatch(getAllUserDetails(pageNo))
-
-  // }
-
-
-  // console.log("isLoading Home", isLoading)
-
-
 
   return (
     <div className={style.bodyContainer}>
       <div className={style.sideBarContainer}>
         <SideBar />
+      </div>
+
+      <div className={style.hamBurgerContainer}>
+        <HamBurgerModal />
       </div>
 
 

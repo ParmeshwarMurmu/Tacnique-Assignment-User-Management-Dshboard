@@ -19,7 +19,13 @@ export const DeleteModal = ({ id }) => {
     const cancelRef = React.useRef()
     const toast = useToast()
     const dispatch = useDispatch();
+
+    // STATE TO HANDLE DELETE LOADING
+
     const [deleteLoading, setDeleteLoading] = useState(false)
+   
+
+    // FUNCTION WHEN USER CLICKS ON DELETE BUTTON TO DELETE USER CREDENTIALS
 
     const deleteUserHandler = () => {
         setDeleteLoading(true)
@@ -35,6 +41,14 @@ export const DeleteModal = ({ id }) => {
                     isClosable: true,
                 })
 
+            })
+            .catch((err)=>{
+                toast({
+                    description: `${err.message}`,
+                    status: 'error',
+                    duration: 4000,
+                    isClosable: true,
+                })
             })
     }
 

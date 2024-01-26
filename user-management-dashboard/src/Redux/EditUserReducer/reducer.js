@@ -1,5 +1,7 @@
-import { EDIT_USER_DEPARTMENT, EDIT_USER_EMAIL_ADDRESS, EDIT_USER_ERROR, EDIT_USER_FIRST_NAME, EDIT_USER_LAST_NAME, EDIT_USER_LOADING, EDIT_USER_SUCCESS } from "./action"
+import { EDIT_USER_DEPARTMENT, EDIT_USER_EMAIL_ADDRESS, EDIT_USER_ERROR, EDIT_USER_FIRST_NAME, EDIT_USER_LAST_NAME, EDIT_USER_LOADING, EDIT_USER_RESET, EDIT_USER_SUCCESS } from "./action"
 
+
+// INITIAL STATE FOR USER EDITING FORM
 
 const initialState = {
     editFirstName: '',
@@ -10,6 +12,8 @@ const initialState = {
     editIsError: false,
     editErrMsg: '',
 }
+
+// REDUCER FUNCTION TO EDIT USER CRENDITIALS
 
 export const reducer = (state = initialState, { type, payload }) => {
 
@@ -35,6 +39,9 @@ export const reducer = (state = initialState, { type, payload }) => {
 
         case EDIT_USER_ERROR:
             return { ...state, editIsError: true, editIsLoading: false, editErrMsg: payload }
+
+            case EDIT_USER_RESET:
+                return {...initialState}
 
         default:
             return { ...state }

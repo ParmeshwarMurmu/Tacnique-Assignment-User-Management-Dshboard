@@ -70,7 +70,7 @@ export const SideBar = () => {
           <form onSubmit={submitFormHandler}>
 
 
-            <FormControl mt={1} isRequired>
+            <FormControl mt={1}>
               <FormLabel>First Name</FormLabel>
               <Input type='text' placeholder='First Name' value={firstName}
                 onChange={(e) => {
@@ -128,6 +128,7 @@ export const SideBar = () => {
               mt={4}
               onClick={submitFormHandler}
               colorScheme={isLoading ? 'blue' : 'blue'}
+              isDisabled={firstName ==="" ||  lastName===''  || department==='' || email==='' ? true : false}
             >
               Add User
             </Button>

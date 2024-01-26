@@ -43,12 +43,7 @@ export const DashboardComponent = () => {
 
             <div className={style.ButtonEditorContainer}>
 
-              {/* <Button
-              className={style.editButton}
-              variant={'none'}
-              >
-                Edit
-              </Button> */}
+             
 
               <div className={style.editModalContainer} >
                 <EditModal {...data} />
@@ -58,12 +53,7 @@ export const DashboardComponent = () => {
                 <DeleteModal {...data}/>
               </div>
 
-              {/* <Button
-                className={style.deleteButton}
-                variant={'none'}
-              >
-                Delete
-              </Button> */}
+             
             </div>
           </div>
         ))

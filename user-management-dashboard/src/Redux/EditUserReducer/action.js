@@ -47,20 +47,20 @@ export const editUserSuccessAction = ()=>{
     return {type: EDIT_USER_SUCCESS}
 }
 
-export const editUserErrorAction = ()=>{
-    return {type: EDIT_USER_ERROR}
+export const editUserErrorAction = (payload)=>{
+    return {type: EDIT_USER_ERROR, payload}
 }
 
 
-export const addUser = (userData)=>(dispatch)=>{
-    // dispatch(addUserLoadingAction())
-    // return axios.post(`${APP_URL}/users`, userData)
-    // .then((res)=>{
-    // //   console.log(res);
-    //   dispatch(addUserSuccessAction())
-    // })
-    // .catch((err)=>{
-    //   console.log(err);
-    //   dispatch(addUserErrorAction(err.message))
-    // })
+export const saveUserEditedDetails = (updateInfo, id)=>(dispatch)=>{
+    dispatch(editUserLoadingAction())
+    return axios.patch(`${APP_URL}/users/${id}`, updateInfo)
+    .then((res)=>{
+      console.log(res);
+      dispatch(editUserSuccessAction())
+    })
+    .catch((err)=>{
+      console.log(err);
+      dispatch(editUserErrorAction(err.message))
+    })
 }

@@ -70,7 +70,7 @@ export const SideBar = () => {
           <form onSubmit={submitFormHandler}>
 
 
-            <FormControl mt={1}>
+            <FormControl mt={1} isRequired>
               <FormLabel>First Name</FormLabel>
               <Input type='text' placeholder='First Name' value={firstName}
                 onChange={(e) => {
@@ -80,7 +80,7 @@ export const SideBar = () => {
 
 
 
-            <FormControl mt={1}>
+            <FormControl mt={1} isRequired>
               <FormLabel>Last Name</FormLabel>
               <Input type='text' placeholder='Last Name' value={lastName}
                 onChange={(e) => {
@@ -88,7 +88,7 @@ export const SideBar = () => {
                 }} />
             </FormControl>
 
-            <FormControl mt={1}>
+            <FormControl mt={1} isRequired>
               <FormLabel>Email</FormLabel>
               <Input type='text' placeholder='Email' value={email}
                 onChange={(e) => {
@@ -96,7 +96,7 @@ export const SideBar = () => {
                 }} />
             </FormControl>
 
-            <FormControl mt={1}>
+            <FormControl mt={1} isRequired>
               <FormLabel>Category</FormLabel>
               <Select placeholder='Select Department' value={department}
                 onChange={(e) => {
@@ -125,6 +125,7 @@ export const SideBar = () => {
               variant={'solid'}
               isLoading={isLoading}
               w={'full'}
+              mt={4}
               onClick={submitFormHandler}
               colorScheme={isLoading ? 'blue' : 'blue'}
             >

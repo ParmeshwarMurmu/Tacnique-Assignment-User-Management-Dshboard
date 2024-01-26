@@ -6,7 +6,7 @@
 }
 
 .userCard{
-    border: 2px solid red;
+    border: 2px solid rgb(191, 197, 191);
     padding: 10px;
 }
 
@@ -24,6 +24,8 @@ span{
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    align-self: flex-end;
+    align-content: flex-end;
 }
 
 .editModalContainer{

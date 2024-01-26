@@ -33,3 +33,36 @@ backend:- https://userdashbord.onrender.com
       - index.js
       - App.js
 
+## Features
+
+- ✅ Add Users
+- ✅ Edit User Details
+- ✅ Delete User
+- ✅ Pagination
+
+
+## Installation & Getting Started
+Detailed instructions on how to install, configure, and get the project running.
+
+
+Step 1. Clone this Repository using Command
+```bash
+git clone Repository Url
+```
+
+Step 2. Install all the necessary dependencies
+
+
+```bash
+cd user-management-dashboard
+npm install
+```
+this will install all the necessary dependencies on your Project.
+
+Step 3. Start your Application. Open the terminal and write the below commands
+```bash
+cd user-management-dashboard
+npm start
+
+```
+this will start your application.

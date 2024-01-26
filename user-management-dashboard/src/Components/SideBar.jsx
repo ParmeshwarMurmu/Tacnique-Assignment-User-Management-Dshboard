@@ -33,7 +33,7 @@ export const SideBar = () => {
   }, shallowEqual)
 
   const submitFormHandler = () => {
-    
+
     let userData = {
       firstName,
       lastName,
@@ -51,7 +51,7 @@ export const SideBar = () => {
           duration: 4000,
           isClosable: true,
         })
-        
+
         dispatch(addUserResetAction())
         dispatch(getAllUserDetails())
       })
@@ -64,7 +64,9 @@ export const SideBar = () => {
     <div className={style.sideBarComponentContainer}>
 
       <div>
-        <h1>Add User</h1>
+        <Heading as='h4' size='md' textAlign={'center'}>
+          Add User
+        </Heading>
 
         <div>
           <form onSubmit={submitFormHandler}>
@@ -128,7 +130,7 @@ export const SideBar = () => {
               mt={4}
               onClick={submitFormHandler}
               colorScheme={isLoading ? 'blue' : 'blue'}
-              isDisabled={firstName ==="" ||  lastName===''  || department==='' || email==='' ? true : false}
+              isDisabled={firstName === "" || lastName === '' || department === '' || email === '' ? true : false}
             >
               Add User
             </Button>

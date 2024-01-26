@@ -18,9 +18,9 @@ export const DashboardComponent = () => {
     }
   })
 
-  useEffect(() => {
-    dispatch(getAllUserDetails())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(getAllUserDetails(1))
+  // }, [])
 
 
   return (

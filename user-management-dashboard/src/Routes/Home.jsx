@@ -6,6 +6,8 @@ import { SideBar } from '../Components/SideBar'
 import style from '../CSS/Home.module.css'
 import { Heading, Button } from '@chakra-ui/react'
 import { DashboardComponent } from '../Components/DashboardComponent'
+import { Spinner } from '@chakra-ui/react'
+
 
 export const Home = () => {
 
@@ -22,12 +24,12 @@ export const Home = () => {
   }, shallowEqual)
 
   const [noOfBtns, setNoOfBtns] = useState(0)
-  
+
   const buttonsArray = [];
   for (let i = 1; i <= noOfBtns; i++) {
     buttonsArray.push(i);
   }
-  
+
 
 
 
@@ -35,13 +37,17 @@ export const Home = () => {
     dispatch(getAllUserDetails(pageNumber))
     setNoOfBtns(Math.ceil(x_total_count / 6))
 
-  }, [x_total_count, pageNumber])
+  }, [pageNumber, x_total_count])
 
-  
-  const paginationHandler = (pageNo)=>{
-    dispatch(getAllUserDetails(pageNo))
 
-  }
+  // const paginationHandler = (pageNo) => {
+  //   dispatch(getAllUserDetails(pageNo))
+
+  // }
+
+
+  // console.log("isLoading Home", isLoading)
+
 
 
   return (
@@ -50,31 +56,47 @@ export const Home = () => {
         <SideBar />
       </div>
 
+
       <div className={style.dashboardContainer}>
-        <Heading as='h2' size='xl'>
+        <Heading as='h2' size='xl' textAlign={'center'}>
           Dashboard
         </Heading>
 
-        <div>
-          <DashboardComponent />
-        </div>
+        {
+          isLoading ? <div className={style.spinnerContainer}><Spinner
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='blue.500'
+            size='xl'
+          /></div> :
 
-        <div className={style.paginationContainer}>
-          {
-            buttonsArray.map((btn, index) => (
-              <Button key={index}
-              variant={'none'}
-              className={style.paginationBtns}
-              isDisabled={pageNumber === btn}
-              onClick={()=>{setPageNumber(btn)}}
-              fontSize={'medium'}
-              >
-                {btn}
-              </Button>
-            ))
-          }
-        </div>
+            <>
+              <div>
+                <DashboardComponent />
+              </div>
+
+
+              <div className={style.paginationContainer}>
+                {
+                  buttonsArray.map((btn, index) => (
+                    <Button key={index}
+                      variant={'none'}
+                      className={style.paginationBtns}
+                      isDisabled={pageNumber === btn}
+                      onClick={() => { setPageNumber(btn) }}
+                      fontSize={'medium'}
+                    >
+                      {btn}
+                    </Button>
+                  ))
+                }
+              </div>
+            </>
+        }
       </div>
+
+
     </div>
   )
 }

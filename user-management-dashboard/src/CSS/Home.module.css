@@ -6,10 +6,12 @@
 .sideBarContainer{
     
     width: 20%;
-    padding: 5px;
+    /* padding: 5px; */
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    height: 670px;
 }
 
 
@@ -37,4 +39,12 @@
 .paginationBtns:hover{
     background-color: rgb(216, 214, 214);
     color: rgb(18, 18, 18);
+}
+
+.spinnerContainer{
+    /* border: 2px solid black; */
+    height: 597px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

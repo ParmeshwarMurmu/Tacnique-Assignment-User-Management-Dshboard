@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import style from '../CSS/SideBar.module.css'
-import { userDepartmentAction, userEmailAddressAction, userFirstNameAction, userLastNameAction } from '../Redux/AddUserReducer/action'
+import { addUserResetAction, userDepartmentAction, userEmailAddressAction, userFirstNameAction, userLastNameAction } from '../Redux/AddUserReducer/action'
 import axios from 'axios'
 import { APP_URL } from '../Constants/Constants'
 import { addUser } from '../Redux/AddUserReducer/action'
@@ -51,7 +51,8 @@ export const SideBar = () => {
           duration: 4000,
           isClosable: true,
         })
-
+        
+        dispatch(addUserResetAction())
         dispatch(getAllUserDetails())
       })
 

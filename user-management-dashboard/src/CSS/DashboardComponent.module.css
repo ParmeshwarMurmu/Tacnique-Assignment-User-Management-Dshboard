@@ -46,7 +46,7 @@ span{
 .deleteButton{
     background-color: rgb(225, 63, 63);
     color: white;
-    width: 40%;
+    width: 100%;
 }
 
 .deleteButton:hover{

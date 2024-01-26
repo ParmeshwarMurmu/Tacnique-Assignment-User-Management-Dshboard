@@ -1,4 +1,4 @@
-import { ADD_USER_ERROR, ADD_USER_LOADING, ADD_USER_SUCCESS, USER_DEPARTMENT, USER_EMAIL_ADDRESS, USER_FIRST_NAME, USER_LAST_NAME } from "./action"
+import { ADD_USER_ERROR, ADD_USER_LOADING, ADD_USER_RESET, ADD_USER_SUCCESS, USER_DEPARTMENT, USER_EMAIL_ADDRESS, USER_FIRST_NAME, USER_LAST_NAME } from "./action"
 
 
 const initialState = {
@@ -28,13 +28,16 @@ export const reducer = (state = initialState, { type, payload }) => {
             return { ...state, department: payload }
 
         case ADD_USER_LOADING:
-            return {...state, isLoading: true}
+            return { ...state, isLoading: true }
 
-            case ADD_USER_SUCCESS:
-                return {...state, isLoading: false}
+        case ADD_USER_SUCCESS:
+            return { ...state, isLoading: false }
 
-                case ADD_USER_ERROR:
-                    return {...state, isError: true, isLoading: false, errMsg: payload}
+        case ADD_USER_ERROR:
+            return { ...state, isError: true, isLoading: false, errMsg: payload }
+
+        case ADD_USER_RESET:
+            return { ...initialState }
 
         default:
             return { ...state }

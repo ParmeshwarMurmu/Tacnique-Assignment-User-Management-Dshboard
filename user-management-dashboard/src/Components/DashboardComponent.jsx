@@ -4,6 +4,7 @@ import { getAllUserDetails } from '../Redux/AllUserReducer/action'
 import style from '../CSS/DashboardComponent.module.css'
 import { Avatar, Button } from '@chakra-ui/react'
 import { EditModal } from './EditModal'
+import { DeleteModal } from './DeleteModal'
 
 
 export const DashboardComponent = () => {
@@ -26,7 +27,7 @@ export const DashboardComponent = () => {
     <div className={style.dashboardComponentContainer}>
       {
         userData.map((data) => (
-          <div className={style.userCard}>
+          <div key={data.id} className={style.userCard}>
             <div className={style.userCardAvatar}>
               <Avatar
                 size='lg'
@@ -48,17 +49,21 @@ export const DashboardComponent = () => {
               >
                 Edit
               </Button> */}
-              
+
               <div className={style.editModalContainer} >
-              <EditModal {...data} />
+                <EditModal {...data} />
               </div>
 
-              <Button
-              className={style.deleteButton}
-              variant={'none'}
+              <div className={style.editModalContainer}>
+                <DeleteModal {...data}/>
+              </div>
+
+              {/* <Button
+                className={style.deleteButton}
+                variant={'none'}
               >
                 Delete
-              </Button>
+              </Button> */}
             </div>
           </div>
         ))

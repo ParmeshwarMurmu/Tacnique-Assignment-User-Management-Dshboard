@@ -8,6 +8,7 @@ export const USER_DEPARTMENT = 'USER_DEPARTMENT';
 export const ADD_USER_LOADING = 'ADD_USER_LOADING'
 export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS'
 export const ADD_USER_ERROR = 'ADD_USER_ERROR'
+export const ADD_USER_RESET = 'ADD_USER_RESET'
 
 // ACTION TYPE FOR USER FIRST NAME
 
@@ -49,6 +50,10 @@ export const addUserSuccessAction = ()=>{
 
 export const addUserErrorAction = ()=>{
     return {type: ADD_USER_ERROR}
+}
+
+export const addUserResetAction = ()=>{
+    return {type: ADD_USER_RESET}
 }
 
 

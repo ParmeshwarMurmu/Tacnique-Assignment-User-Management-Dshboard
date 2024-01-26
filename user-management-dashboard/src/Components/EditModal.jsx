@@ -3,32 +3,40 @@ import {
     Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, FormControl, FormLabel,
     FormErrorMessage, FormHelperText, Select, useToast, Input, InputGroup, InputRightElement, IconButton
 } from '@chakra-ui/react'
-import { EditIcon } from '@chakra-ui/icons'
+import { EditIcon, CheckIcon, SmallCloseIcon } from '@chakra-ui/icons'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
 import style from '../CSS/DashboardComponent.module.css'
 import { editUserEmailAddressAction, editUserFirstNameAction, editUserLastNameAction } from '../Redux/EditUserReducer/action'
+import { Tooltip } from '@chakra-ui/react'
+
 
 export const EditModal = ({ id, firstName, lastName, email, department }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const [editUserFirstName, setEditUserFirstName] = useState(false);
-    const [editUserLastName, setEditUserLastName] = useState(true)
-    const [editUserEmail, setEditUserEmail] = useState(true)
-    const [editUserDepartment, setEditUserDepartment] = useState(true)
+    const [editUserLastName, setEditUserLastName] = useState(false)
+    const [editUserEmail, setEditUserEmail] = useState(false)
+    const [editUserDepartment, setEditUserDepartment] = useState(false)
+
+    // Saves edit
+    const [saveFirstname, setSaveFirstName] = useState(false);
+    const [saveLastName, setSaveLastName] = useState(false);
+    const [saveEmail, setSaveEmail] = useState(false)
+    const [saveDepartment, setSaveDepartment] = useState(false)
 
     const firstNameRef = useRef(null);
 
     const dispatch = useDispatch();
-  
+
     const { editFirstName, editLastName, editEmail, editDepartment, editIsLoding, editIsError } = useSelector((store) => {
-      return {
-        editFirstName: store.EditUserReducer.editFirstName,
-        editLastName: store.EditUserReducer.editLastName,
-        editEmail: store.EditUserReducer.editEmail,
-        editDepartment: store.EditUserReducer.editDepartment,
-      }
+        return {
+            editFirstName: store.EditUserReducer.editFirstName,
+            editLastName: store.EditUserReducer.editLastName,
+            editEmail: store.EditUserReducer.editEmail,
+            editDepartment: store.EditUserReducer.editDepartment,
+        }
     }, shallowEqual)
 
 
@@ -63,27 +71,65 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                 <InputGroup>
                                     <FormControl mt={1}>
                                         <FormLabel>First Name</FormLabel>
-                                        {editUserFirstName ? (
-                                        <Input
-                                            type="text"
-                                            placeholder="First Name"
-                                            value={editFirstName}
-                                            onChange={(e)=>{dispatch(editUserFirstNameAction(e.target.value))}}
-                                        />
-                                    ) : (
-                                        <Input type="text" placeholder="First Name" value={firstName} isDisabled />
-                                    )}
+                                        {editUserFirstName || saveFirstname ? (
+                                            <Input
+                                                type="text"
+                                                placeholder="First Name"
+                                                value={editFirstName}
+                                                disabled={saveFirstname}
+                                                onChange={(e) => { dispatch(editUserFirstNameAction(e.target.value)) }}
+                                            />
+                                        ) : (
+                                            <Input type="text" placeholder="First Name" value={firstName} isDisabled />
+                                        )}
                                     </FormControl>
 
                                     <InputRightElement width="4.5rem">
-                                        <IconButton
-                                            variant={'none'}
-                                            h="1.75rem"
-                                            size="sm"
-                                            icon={<EditIcon />}
-                                            onClick={() => { setEditUserFirstName(true) }}
-                                        />
+                                        {!editUserFirstName && <Tooltip hasArrow label='Edit' bg='gray.300' color='black'>
+                                            <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<EditIcon />}
+                                                onClick={() => { 
+                                                    setEditUserFirstName(true)
+                                                    setSaveFirstName(false)
+
+                                                 }}
+                                            />
+
+                                        </Tooltip>
+                                        }
+
+                                        {editUserFirstName && <Tooltip hasArrow label='save' bg='gray.300' color='black'>
+                                            <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<CheckIcon />}
+                                                onClick={()=>{
+                                                    setSaveFirstName(true)
+                                                    setEditUserFirstName(false)
+                                                }}
+                                            />
+                                        </Tooltip>
+                                        }
+
+                                        {
+                                            editUserFirstName && <Tooltip hasArrow label='discard' bg='gray.300' color='black'>
+                                                <IconButton
+                                                variant={'none'}
+                                                h="1.75rem"
+                                                size="sm"
+                                                icon={<SmallCloseIcon />}
+                                                onClick={()=>{
+                                                    setEditUserFirstName(false)
+                                                }}
+                                                 />
+                                            </Tooltip>
+                                        }
                                     </InputRightElement>
+
                                 </InputGroup>
 
 
@@ -91,15 +137,15 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                     <FormControl mt={1}>
                                         <FormLabel>Last Name</FormLabel>
                                         {editUserLastName ? (
-                                        <Input
-                                            type="text"
-                                            placeholder="First Name"
-                                            value={editLastName}
-                                            onChange={(e)=>{dispatch(editUserLastNameAction(e.target.value))}}
-                                        />
-                                    ) : (
-                                        <Input type="text" placeholder="Last Name" value={lastName} isDisabled />
-                                    )}
+                                            <Input
+                                                type="text"
+                                                placeholder="First Name"
+                                                value={editLastName}
+                                                onChange={(e) => { dispatch(editUserLastNameAction(e.target.value)) }}
+                                            />
+                                        ) : (
+                                            <Input type="text" placeholder="Last Name" value={lastName} isDisabled />
+                                        )}
                                     </FormControl>
 
                                     <InputRightElement width="4.5rem">
@@ -108,6 +154,7 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                             h="1.75rem"
                                             size="sm"
                                             icon={<EditIcon />}
+                                            onClick={() => { setEditUserLastName(true) }}
                                         />
                                     </InputRightElement>
                                 </InputGroup>
@@ -116,16 +163,16 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                 <InputGroup>
                                     <FormControl mt={1}>
                                         <FormLabel>Email</FormLabel>
-                                        {editUserEmail? (
-                                        <Input
-                                            type="text"
-                                            placeholder="Email"
-                                            value={editEmail}
-                                            onChange={(e)=>{dispatch(editUserEmailAddressAction(e.target.value))}}
-                                        />
-                                    ) : (
-                                        <Input type="text" placeholder="Email" value={email} isDisabled />
-                                    )}
+                                        {editUserEmail ? (
+                                            <Input
+                                                type="text"
+                                                placeholder="Email"
+                                                value={editEmail}
+                                                onChange={(e) => { dispatch(editUserEmailAddressAction(e.target.value)) }}
+                                            />
+                                        ) : (
+                                            <Input type="text" placeholder="Email" value={email} isDisabled />
+                                        )}
                                     </FormControl>
 
                                     <InputRightElement width="4.5rem">
@@ -134,6 +181,7 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                             h="1.75rem"
                                             size="sm"
                                             icon={<EditIcon />}
+                                            onClick={() => { setEditUserEmail(true) }}
                                         />
                                     </InputRightElement>
 
@@ -142,51 +190,42 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
 
                                 <InputGroup>
                                     <FormControl mt={1}>
-                                        <FormLabel>Category</FormLabel>
+                                        <FormLabel>Department</FormLabel>
 
-                                        {editUserFirstName ? (
-                                        <Input
-                                            type="text"
-                                            placeholder="First Name"
-                                            value={editFirstName}
-                                            onChange={(e)=>{dispatch(editUserFirstNameAction(e.target.value))}}
-                                        />
-                                    ) : (
-                                        <Input type="text" placeholder="First Name" value={firstName} isDisabled />
-                                    )}{
-                                        editUserDepartment ? (
-                                            <Select placeholder='Select Department' value={editDepartment}
-                                            
-                                            onChange={(e) => {
-                                                // dispatch(userDepartmentAction(e.target.value))
-                                            }}>
-                                            <option value="HR Department">HR Department</option>
-                                            <option value="Finance Department">Finance Department</option>
-                                            <option value="Marketing Department">Marketing Department</option>
-                                            <option value="Sales Department">Sales Department</option>
-                                            <option value="IT Department">IT Department</option>
-                                            <option value="Production Department">Production Department</option>
-                                            <option value="Health and Safety Department">Health and Safety Department</option>
+                                        {
+                                            editUserDepartment ? (
+                                                <Select placeholder='Select Department' value={editDepartment}
 
-                                        </Select>
-                                        )
+                                                    onChange={(e) => {
+                                                        // dispatch(userDepartmentAction(e.target.value))
+                                                    }}>
+                                                    <option value="HR Department">HR Department</option>
+                                                    <option value="Finance Department">Finance Department</option>
+                                                    <option value="Marketing Department">Marketing Department</option>
+                                                    <option value="Sales Department">Sales Department</option>
+                                                    <option value="IT Department">IT Department</option>
+                                                    <option value="Production Department">Production Department</option>
+                                                    <option value="Health and Safety Department">Health and Safety Department</option>
 
-                                        : (
-                                            <Select placeholder='Select Department' value={department}
-                                            disabled
-                                            >
-                                            <option value="HR Department">HR Department</option>
-                                            <option value="Finance Department">Finance Department</option>
-                                            <option value="Marketing Department">Marketing Department</option>
-                                            <option value="Sales Department">Sales Department</option>
-                                            <option value="IT Department">IT Department</option>
-                                            <option value="Production Department">Production Department</option>
-                                            <option value="Health and Safety Department">Health and Safety Department</option>
+                                                </Select>
+                                            )
 
-                                        </Select>
-                                        )
-                                    }
-                                        
+                                                : (
+                                                    <Select placeholder='Select Department' value={department}
+                                                        disabled
+                                                    >
+                                                        <option value="HR Department">HR Department</option>
+                                                        <option value="Finance Department">Finance Department</option>
+                                                        <option value="Marketing Department">Marketing Department</option>
+                                                        <option value="Sales Department">Sales Department</option>
+                                                        <option value="IT Department">IT Department</option>
+                                                        <option value="Production Department">Production Department</option>
+                                                        <option value="Health and Safety Department">Health and Safety Department</option>
+
+                                                    </Select>
+                                                )
+                                        }
+
 
                                     </FormControl>
 
@@ -198,6 +237,7 @@ export const EditModal = ({ id, firstName, lastName, email, department }) => {
                                             h="1.75rem"
                                             size="sm"
                                             icon={<EditIcon />}
+                                            onClick={() => { setEditUserDepartment(true) }}
                                         />
                                     </InputRightElement>
 

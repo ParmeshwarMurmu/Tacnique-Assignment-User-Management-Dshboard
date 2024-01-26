@@ -92,6 +92,28 @@ And the user will see  the details of that user in the dashboard section with al
 
 ![User Added Successfully](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/19a8a500-0be2-47ff-bf82-550b459b70e7)
 
+## Editing Details Of a User
+
+Users can also edit their existing details except for the ID. To edit the existing details user can see an Edit button on the user Profile.
+
+***NOTE** All the fields will be disabled by default. To edit any field user needs to click on the edit icon button.
+
+On clicking the edit button an edit modal will open where the user sees all the details filled by default and to edit any field user will see an edit icon on clicking user will be able to edit that field.
+Clicking on the save details button user will able to see the edited details on the dashboard section.
+
+***Note** Before saving user needs to click on the check icon to save any edited form fields
+
+![Edit Details](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/9cdc365c-d7fd-4ab7-90fb-7d3929d11a85)
+
+
+After a Successful edit user will see the edited data on the dashboard section.
+
+
+![Edit Last Name](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/893ff0eb-8f46-4099-b2e2-2e9eeb02fc40)
+
+
+
+
 
 
 

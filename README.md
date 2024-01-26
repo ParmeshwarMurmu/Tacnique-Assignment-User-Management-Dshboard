@@ -14,7 +14,6 @@ backend:- https://userdashbord.onrender.com
 
 - [Installation & Getting Started](#installation--getting-started)
 - [Usage](#usage)
-- [Authenticated Pages](#authenticated-pages)
 - [API Endpoints](#api-endpoints)
 - [Technology Used](#technology-used)
 
@@ -122,6 +121,19 @@ To delete any particular detail user can see a delete button on the profile sect
 
 
 
+
+
+## Technology Used
+
+List and overview of the technologies used in the project.
+
+**frontend**
+- React
+- Redux
+- Chakra UI
+
+**backend**
+- Json Server
 
 
 

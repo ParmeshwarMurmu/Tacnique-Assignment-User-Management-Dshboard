@@ -11,11 +11,12 @@ export const Home = () => {
 
   const dispatch = useDispatch()
 
-  const { isLoading, userData, isError } = useSelector((store) => {
+  const { isLoading, userData, isError, x_total_count } = useSelector((store) => {
     return {
       isLoading: store.AllUserReducer.isLoading,
       userData: store.AllUserReducer.userData,
       isError: store.AllUserReducer.isError,
+      x_total_count: store.AllUserReducer.x_total_count
     }
   }, shallowEqual)
 
@@ -41,6 +42,10 @@ export const Home = () => {
 
         <div>
           <DashboardComponent />
+        </div>
+
+        <div>
+          
         </div>
       </div>
     </div>

@@ -14,6 +14,7 @@ backend:- https://userdashbord.onrender.com
 
 - [Installation & Getting Started](#installation--getting-started)
 - [Usage](#usage)
+- [Responsive](#responsive)
 - [API Endpoints](#api-endpoints)
 - [Technology Used](#technology-used)
 
@@ -38,6 +39,7 @@ backend:- https://userdashbord.onrender.com
 - ✅ Edit User Details
 - ✅ Delete User
 - ✅ Validation
+- ✅ Responsive
 - ✅ Pagination
 
 
@@ -117,6 +119,23 @@ To delete any particular detail user can see a delete button on the profile sect
 ![Delete Confirmation](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/b7d701a8-65d6-4246-82a8-77f8bf7f8d5c)
 
 ![Delete Confirmation Message](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/645db52c-fb54-45cb-acf5-2086293203da)
+
+## Responsive
+
+1. Small Screen Sizes
+
+![Small Screen Devices](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/7466fca3-ff84-4e19-83a8-ddd5b2c40c79)
+
+2. Medium Screen Sizes
+
+![Medium Screen Sizes](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/03bd1b99-69c2-4547-9c79-ec471e8d6876)
+
+3. Large Screen Sizes
+
+![Large Screen Sizes](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/a3fa7651-60b1-404d-97f5-09772b598de6)
+
+
+
 
 ## API Endpoints
 

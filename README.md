@@ -118,6 +118,132 @@ To delete any particular detail user can see a delete button on the profile sect
 
 ![Delete Confirmation Message](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/645db52c-fb54-45cb-acf5-2086293203da)
 
+## API Endpoints
+
+List of your API endpoints, methods, brief descriptions, and examples of request/response.
+
+- POST /users - To Add a User
+
+Example :- 
+
+Request
+
+```bash
+axios.post(`${APP_URL}/users`, userData)
+    .then((res)=>{
+       console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+
+```
+
+Response
+```bash
+{ 
+   "message": "User Added Successfull." 
+}
+
+```
+
+- GET /users - To Get All Data Of Users Details
+
+Example :- 
+
+Request
+
+```bash
+ axios.get(`${APP_URL}/users`)
+    .then((res)=>{
+        console.log(res.data);
+    })
+    .catch((err)=>{
+        console.log(err);
+      
+    })
+
+```
+
+Response
+```bash
+{ 
+   data: [
+     {
+      id: 1,
+      firstName: "John",
+      lastName:"Doe",
+      email: "john@gmail.com",
+      department: "HR Department"
+    },
+    {
+      id: 2,
+      firstName: "Marco",
+      lastName:"Arom",
+      email: "aron@gmail.com",
+      department: "Finance Department"
+    },
+    {
+      id: 3,
+      firstName: "Adelina",
+      lastName:"Ethan",
+      email: "adelinaEthan@gmail.com",
+      department: "Sales Department"
+    }
+    ]
+}
+
+```
+
+- PATCH /users/${id} - To Edit User Details
+
+Example :- 
+
+Request
+
+```bash
+axios.patch(`${APP_URL}/users/${id}`, updateInfo)
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+
+```
+
+Response
+```bash
+{ 
+   "message": "Edited Successfully." 
+}
+
+```
+
+- DELETE /users/${id} - To Delete User Details
+
+Example :- 
+
+Request
+
+```bash
+axios.delete(`${APP_URL}/users/${id}`)
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+
+```
+
+Response
+```bash
+{ 
+   "message": "Deleted Successfull." 
+}
+
+```
 
 
 

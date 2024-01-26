@@ -25,12 +25,13 @@ export const x_total_countAction = (payload)=>{
 
 export const getAllUserDetails = (pageNumber)=>(dispatch)=>{
     dispatch(allUserLoadingAction())
-    axios.get(`${APP_URL}/users?_limit=6&_page=${pageNumber}`)
+    axios.get(`${APP_URL}/users?_limit=6&_page=${pageNumber}&_sort=id&_order=desc`)
     .then((res)=>{
         console.log(res.headers['x-total-count']);
         // console.log(res.data);
+        const reversedData = res.data;
         dispatch(x_total_countAction(res.headers['x-total-count']))
-        dispatch(allUserSuccessAction(res.data))
+        dispatch(allUserSuccessAction(reversedData))
 
     })
     .catch((err)=>{

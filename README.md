@@ -96,12 +96,12 @@ And the user will see  the details of that user in the dashboard section with al
 
 Users can also edit their existing details except for the ID. To edit the existing details user can see an Edit button on the user Profile.
 
-***NOTE** All the fields will be disabled by default. To edit any field user needs to click on the edit icon button.
+NOTE*** All the fields will be disabled by default. To edit any field user needs to click on the edit icon button.
 
 On clicking the edit button an edit modal will open where the user sees all the details filled by default and to edit any field user will see an edit icon on clicking user will be able to edit that field.
 Clicking on the save details button user will able to see the edited details on the dashboard section.
 
-***Note** Before saving user needs to click on the check icon to save any edited form fields
+Note*** Before saving user needs to click on the check icon to save any edited form fields
 
 ![Edit Details](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/9cdc365c-d7fd-4ab7-90fb-7d3929d11a85)
 
@@ -110,6 +110,14 @@ After a Successful edit user will see the edited data on the dashboard section.
 
 
 ![Edit Last Name](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/893ff0eb-8f46-4099-b2e2-2e9eeb02fc40)
+
+## Delete User Details
+
+To delete any particular detail user can see a delete button on the profile section. On clicking delete modal will open with a Confirmation message and if user want to delete can proceed and after successfull deletion user will see a alert with successfully deletion message.
+
+![Delete Confirmation](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/b7d701a8-65d6-4246-82a8-77f8bf7f8d5c)
+
+![Delete Confirmation Message](https://github.com/ParmeshwarMurmu/Tacnique-Assignment-User-Management-Dshboard/assets/121368970/645db52c-fb54-45cb-acf5-2086293203da)
 
 
 
